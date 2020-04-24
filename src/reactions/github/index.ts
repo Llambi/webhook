@@ -6,6 +6,7 @@ import { PullRequestMerged } from './pull-request-merged';
 import { PullRequestOpened } from './pull-request-opened';
 import { Reaction } from './reaction';
 import { Star } from './star';
+import { IssueAssigned } from './issue-assigned';
 
 export default {
 	Fork,
@@ -28,5 +29,6 @@ export const reactionBuild = ({
 		new PullRequestMerged(twitchChat, streamlabs),
 		new PullRequestOpened(twitchChat, streamlabs),
 		new Star(twitchChat, streamlabs),
+		new IssueAssigned(twitchChat, streamlabs),
 	];
 };

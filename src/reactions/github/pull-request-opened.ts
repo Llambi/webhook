@@ -9,8 +9,13 @@ export class PullRequestOpened extends Reaction<PullRequestPayload> {
 	canHandle({
 		payload,
 		event,
+		config,
 	}: ReactionCanHandleOptions<PullRequestPayload>): boolean {
-		return event === 'pull_request' && payload.action === 'opened';
+		return (
+			event === 'pull_request' &&
+			payload.action === 'opened' &&
+			!(!!config && config.IGNORE_PR_OPENED_BY.includes(payload.sender.login))
+		);
 	}
 	getStreamLabsMessage({
 		payload,
